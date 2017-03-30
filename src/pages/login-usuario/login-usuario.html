@@ -23,6 +23,16 @@
     <ion-item>
       <button ion-button block (click)="loginFacebook()" color="azulFacebook">Login com Facebook</button>
       <button ion-button block (click)="loginGoogle()" color="secondary">Login com Google</button>
+      <button ion-button block outline>Entrar</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <button ion-button block color="secondary" (click)="loginGoogle()">Google</button>
+    </ion-item>
+    <ion-item>
+      <button ion-button block color="primary" (click)="loginFacebook()">Facebook</button>
     </ion-item>
   </ion-list>
 
@@ -39,6 +49,16 @@
         </ion-row>
       </ion-grid>
     </ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <a (click)="inscricao()">Inscrever-se</a>
+        </ion-col>
+        <ion-col>
+          <a (click)="esqueciSenha()">Esqueci a senha</a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 
 </ion-content>
