@@ -9,7 +9,11 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-    
+
   }
+
+  btnHome(){
+    console.log("Clicou o botão logo de home.");
+  }//btnHome
 
 }

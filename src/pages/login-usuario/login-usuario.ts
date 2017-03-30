@@ -1,22 +1,40 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-/*
-  Generated class for the LoginUsuario page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-login-usuario',
   templateUrl: 'login-usuario.html'
 })
 export class LoginUsuarioPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public angFire: AngularFire) {
+
+
+    }//constructor
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginUsuarioPage');
   }
+
+  inscricao(){
+    console.log("Clicou em inscrever-se");
+  }//inscricao
+
+  esqueciSenha(){
+    console.log("Clicou em esqueci a senha");
+  }//esqueciSenha
+
+  loginGoogle(){
+    console.log("Login com o Google");
+  }//loginGoogle
+
+  loginFacebook(){
+    console.log("Login com o Facebook");
+  }//loginFacebook
 
 }
