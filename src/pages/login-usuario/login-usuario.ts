@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the LoginUsuario page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-login-usuario',
   templateUrl: 'login-usuario.html'
@@ -17,6 +12,22 @@ export class LoginUsuarioPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginUsuarioPage');
+  }
+
+  loginUsuario(){
+    console.log("Login de usuário");
+  }
+  loginFacebook(){
+    console.log("Login com Facebook");
+  }
+  loginGoogle(){
+    console.log("Login com Google");
+  }
+  inscricao(){
+    console.log("Inscrição de usuário");
+  }
+  esqueciSenha(){
+    console.log("Esqueci a senha");
   }
 
 }
