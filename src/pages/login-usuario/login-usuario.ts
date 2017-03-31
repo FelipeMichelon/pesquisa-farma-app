@@ -52,7 +52,8 @@ export class LoginUsuarioPage {
   }//loginGoogle
 
   loginFacebook(){
-    console.log("Login com o Facebook");
+    //console.log("Login com o Facebook");
+
   }//loginFacebook
 
   inscricao(){
