@@ -53,7 +53,20 @@ export class LoginUsuarioPage {
 
   loginFacebook(){
     //console.log("Login com o Facebook");
-
+    this.angFire.auth.login({
+      provider: AuthProviders.Facebook,
+      method: AuthMethods.Popup
+    }).then((response)=>{
+      console.log("Sucesso ao logar com o facebook.");
+      let currentuser = {
+        email: response.auth.displayName,
+        picture: response.auth.photoURL
+      };
+      window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+      this.navCtrl.pop();
+    }).catch((error)=>{
+      console.log(error);
+    })
   }//loginFacebook
 
   inscricao(){
