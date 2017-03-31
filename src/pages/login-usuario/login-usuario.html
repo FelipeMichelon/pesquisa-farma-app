@@ -5,20 +5,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="conteudo">
 
   <ion-list>
+
     <ion-item>
-      <ion-label floating>E-mail</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked>E-mail</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="email">Email</ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-label stacked>Senha</ion-label>
+      <ion-input type="password" name="password" [(ngModel)]="password">Senha</ion-input>
     </ion-item>
-    <ion-item>
-      <button ion-button block outline (click)="loginUsuario()">Entrar</button>
-    </ion-item>
+    <button ion-button (click)="loginUsuario()">Entrar</button>
+
     <br/>
     <ion-item>
       <button ion-button block (click)="loginFacebook()" color="azulFacebook">Login com Facebook</button>
