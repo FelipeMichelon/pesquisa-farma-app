@@ -14,7 +14,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public angFire: AngularFire) {
 
-    //window.localStorage.removeItem('currentuser');
+    window.localStorage.removeItem('currentuser');
     if(!this.estaLogado()){
       console.log("Você não está logado.");
       this.navCtrl.push(LoginUsuarioPage);
