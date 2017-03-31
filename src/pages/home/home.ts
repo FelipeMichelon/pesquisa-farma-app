@@ -18,7 +18,6 @@ export class HomePage {
     if(!this.estaLogado()){
       console.log("Você não está logado.");
       this.navCtrl.push(LoginUsuarioPage);
-      //this.angFire.auth.logout();
     }
 
   }//constructor
