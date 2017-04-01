@@ -15,7 +15,7 @@ export class HomePage {
     public angFire: AngularFire,
     public modalCtrl: ModalController) {
 
-    window.localStorage.removeItem('currentuser');
+    //window.localStorage.removeItem('currentuser');
     if(!this.estaLogado()){
       console.log("Você não está logado.");
       //this.navCtrl.push(LoginUsuarioPage);
