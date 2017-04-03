@@ -18,10 +18,9 @@ export class HomePage {
     //window.localStorage.removeItem('currentuser');
     if(!this.estaLogado()){
       console.log("Você não está logado.");
-      //this.navCtrl.push(LoginUsuarioPage);
       let telaLogin = this.modalCtrl.create(LoginUsuarioPage);
       telaLogin.present();
-    }//if
+    }
 
   }//constructor
 
