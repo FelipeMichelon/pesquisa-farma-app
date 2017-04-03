@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyD5iXNHhnC6ORYdXnWeVGvXcDLEjW0CwnI",
@@ -37,8 +36,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Facebook
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
-
 
 @Component({
   selector: 'page-login-usuario',
@@ -17,8 +15,7 @@ export class LoginUsuarioPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public angFire: AngularFire,
-    public alertCtrl: AlertController,
-    public fb: Facebook) {
+    public alertCtrl: AlertController) {
 
 
     }//constructor
@@ -48,25 +45,6 @@ export class LoginUsuarioPage {
       console.log(error);
     })
   }//loginUsuario
-
-  loginGoogle(){
-    console.log("Login com o Google");
-
-  }//loginGoogle
-
-  loginFacebook(){
-    //console.log("Login com o Facebook");
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-      .then((res: FacebookLoginResponse) => {
-        console.log('Logged into Facebook!', res);
-        this.navCtrl.pop();
-      })
-        .catch(e => console.log('Error logging into Facebook', e));
-  }//loginFacebook
-
-  inscricao(){
-    console.log("Inscrição de usuário");
-  }//inscricao
 
   esqueciSenha(){
     console.log("Clicou em esqueci a senha");
