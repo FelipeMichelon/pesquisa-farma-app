@@ -78,6 +78,10 @@ export class LoginUsuarioPage {
       text: 'Ok',
       handler: data =>{
         let pgInscricao = this.modalCtrl.create(InscricaoPage, {escolha: data});
+        pgInscricao.onDidDismiss((data)=>{
+          console.log("Login usuario page: ", data);
+          
+        });
         pgInscricao.present();
       }
     });

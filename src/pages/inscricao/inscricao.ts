@@ -45,8 +45,14 @@ export class InscricaoPage {
     //console.log(this.usuario.nome);
     this.fireAuth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.senha)
       .then((newUser)=>{
-        this.userData.child(newUser.uid).set({email: this.usuario.email});
+        this.userData.child(newUser.uid).set({
+          nome: this.usuario.nome,
+          email: this.usuario.email
+        });
       });
+    this.viewCtrl.dismiss(this.usuario.nome);
   }//entrarUsuario
+
+
 
 }
