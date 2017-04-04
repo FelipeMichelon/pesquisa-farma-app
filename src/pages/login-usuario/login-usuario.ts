@@ -59,8 +59,29 @@ export class LoginUsuarioPage {
 
   inscricao(){
     //console.log("Inscrição de usuário");
-    let pgInscricao = this.modalCtrl.create(InscricaoPage);
-    pgInscricao.present();
+    let alerta = this.alertCtrl.create();
+    alerta.setTitle('Tipo de inscrição');
+    alerta.addInput({
+      type: 'radio',
+      label: 'Farmácia',
+      value: 'Farmácia',
+      checked: false
+    });
+    alerta.addInput({
+      type: 'radio',
+      label: 'Usuário',
+      value: 'Usuário',
+      checked: true
+    });
+    alerta.addButton('Cancelar');
+    alerta.addButton({
+      text: 'Ok',
+      handler: data =>{
+        let pgInscricao = this.modalCtrl.create(InscricaoPage, {escolha: data});
+        pgInscricao.present();
+      }
+    });
+    alerta.present();
   }//inscricao
 
   esqueciSenha(){
