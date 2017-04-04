@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 
+import { InscricaoPage } from '../inscricao/inscricao';
 
 @Component({
   selector: 'page-login-usuario',
@@ -15,7 +16,8 @@ export class LoginUsuarioPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public angFire: AngularFire,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController) {
 
 
     }//constructor
@@ -56,7 +58,9 @@ export class LoginUsuarioPage {
   }//loginFacebook
 
   inscricao(){
-    console.log("Inscrição de usuário");
+    //console.log("Inscrição de usuário");
+    let pgInscricao = this.modalCtrl.create(InscricaoPage);
+    pgInscricao.present();
   }//inscricao
 
   esqueciSenha(){

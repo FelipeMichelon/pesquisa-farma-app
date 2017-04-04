@@ -13,7 +13,7 @@
 
   <ion-item>
     <ion-label stacked>Nome do usuário</ion-label>
-    <ion-input type="text" placeholder="Digite seu nome aqui."></ion-input>
+    <ion-input [(ngModel)]="usuario.nome" type="text" placeholder="Digite seu nome aqui."></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>E-mail</ion-label>
@@ -26,6 +26,9 @@
   <ion-item>
     <ion-label stacked>Endereço</ion-label>
     <ion-input type="text" placeholder="Seu endereço"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button block (click)="entrarUsuario()" color="btnUsuario">Cadastrar</button>
   </ion-item>
 
 </ion-content>
