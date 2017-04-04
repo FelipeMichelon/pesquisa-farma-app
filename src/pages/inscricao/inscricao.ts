@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 
 @Component({
@@ -10,14 +10,20 @@ export class InscricaoPage {
 
   tipoDeCadastro: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController) {
 
-
+    this.tipoDeCadastro = this.navParams.get('escolha');
 
   }//constructor
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InscricaoPage');
+  }
+
+  fecharInscricao(){
+    this.viewCtrl.dismiss();
   }
 
 }

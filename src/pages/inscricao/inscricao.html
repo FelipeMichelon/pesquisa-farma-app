@@ -2,10 +2,27 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Tipo de cadastro: {{ tipoDeCadastro }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="fecharInscricao()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding *ngIf="tipoDeCadastro=='Usuário'" class="usuario">
+
+  <ion-item>
+    <ion-label stacked>Nome do usuário</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+
+</ion-content>
+
+<ion-content padding *ngIf="tipoDeCadastro=='Farmácia'" class="farmacia">
+
+  <ion-item>
+    <ion-label stacked>Nome da farmácia</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
 </ion-content>

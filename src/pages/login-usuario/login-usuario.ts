@@ -57,13 +57,13 @@ export class LoginUsuarioPage {
     alert.addInput({
       type: 'radio',
       label: 'Farmácia',
-      value: 'farmacia',
+      value: 'Farmácia',
       checked: false
     });
     alert.addInput({
       type: 'radio',
       label: 'Usuário',
-      value: 'usuario',
+      value: 'Usuário',
       checked: true
     });
     alert.addButton('Cancelar');
@@ -71,7 +71,7 @@ export class LoginUsuarioPage {
       text: 'Ok',
       handler: data =>{
         console.log(data);
-        let telaInsc = this.modalCtrl.create(InscricaoPage);
+        let telaInsc = this.modalCtrl.create(InscricaoPage, {escolha: data});
         telaInsc.present();
       }
     });
