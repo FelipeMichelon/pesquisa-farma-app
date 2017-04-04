@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
-
-import { InscricaoPage } from '../inscricao/inscricao';
 
 
 @Component({
@@ -17,8 +15,7 @@ export class LoginUsuarioPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public angFire: AngularFire,
-    public alertCtrl: AlertController,
-    public modalCtrl: ModalController) {
+    public alertCtrl: AlertController) {
 
 
     }//constructor
@@ -49,33 +46,17 @@ export class LoginUsuarioPage {
     })
   }//loginUsuario
 
-  inscricao(){
-    console.log("Inscricao de usuario/farmacia.");
-    let alert = this.alertCtrl.create();
-    alert.setTitle("Escolha de inscrição.");
+  loginGoogle(){
+    console.log("Login com o Google");
 
-    alert.addInput({
-      type: 'radio',
-      label: 'Farmácia',
-      value: 'Farmácia',
-      checked: false
-    });
-    alert.addInput({
-      type: 'radio',
-      label: 'Usuário',
-      value: 'Usuário',
-      checked: true
-    });
-    alert.addButton('Cancelar');
-    alert.addButton({
-      text: 'Ok',
-      handler: data =>{
-        console.log(data);
-        let telaInsc = this.modalCtrl.create(InscricaoPage, {escolha: data});
-        telaInsc.present();
-      }
-    });
-    alert.present();
+  }//loginGoogle
+
+  loginFacebook(){
+    console.log("Login com o Facebook");
+  }//loginFacebook
+
+  inscricao(){
+    console.log("Inscrição de usuário");
   }//inscricao
 
   esqueciSenha(){
