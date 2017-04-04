@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { InscricaoPage } from '../inscricao/inscricao';
@@ -16,6 +16,7 @@ export class LoginUsuarioPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public angFire: AngularFire,
+    public viewCtrl: ViewController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController) {
 
@@ -80,7 +81,9 @@ export class LoginUsuarioPage {
         let pgInscricao = this.modalCtrl.create(InscricaoPage, {escolha: data});
         pgInscricao.onDidDismiss((data)=>{
           console.log("Login usuario page: ", data);
-          
+          if(data!=''){
+            this.viewCtrl.dismiss();
+          }
         });
         pgInscricao.present();
       }
