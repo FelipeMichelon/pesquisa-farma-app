@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginUsuarioPage } from '../pages/login-usuario/login-usuario';
+import { InscricaoPage } from '../pages/inscricao/inscricao';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { LoginUsuarioPage } from '../pages/login-usuario/login-usuario';
 })
 export class MyApp {
   rootPage:any = HomePage;
-  //rootPage:any =LoginUsuarioPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginUsuarioPage } from '../pages/login-usuario/login-usuario';
+import { InscricaoPage } from '../pages/inscricao/inscricao';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    LoginUsuarioPage
+    LoginUsuarioPage,
+    InscricaoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -31,7 +33,8 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    LoginUsuarioPage
+    LoginUsuarioPage,
+    InscricaoPage
   ],
   providers: [
     StatusBar,
