@@ -17,15 +17,11 @@
   </ion-item>
   <ion-item>
     <ion-label stacked>E-mail</ion-label>
-    <ion-input type="text" placeholder="Seu endereço de e-mail."></ion-input>
+    <ion-input [(ngModel)]="usuario.email" type="text" placeholder="Seu endereço de e-mail."></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Senha</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label stacked>Endereço</ion-label>
-    <ion-input type="text" placeholder="Seu endereço"></ion-input>
+    <ion-input [(ngModel)]="usuario.senha" type="password"></ion-input>
   </ion-item>
   <ion-item>
     <button ion-button block (click)="entrarUsuario()" color="btnUsuario">Cadastrar</button>
