@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
+
+import { InscricaoPage } from '../inscricao/inscricao';
 
 
 @Component({
@@ -15,7 +17,8 @@ export class LoginUsuarioPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public angFire: AngularFire,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController) {
 
 
     }//constructor
@@ -45,6 +48,35 @@ export class LoginUsuarioPage {
       console.log(error);
     })
   }//loginUsuario
+
+  inscricao(){
+    console.log("Inscricao de usuario/farmacia.");
+    let alert = this.alertCtrl.create();
+    alert.setTitle("Escolha de inscrição.");
+
+    alert.addInput({
+      type: 'radio',
+      label: 'Farmácia',
+      value: 'farmacia',
+      checked: false
+    });
+    alert.addInput({
+      type: 'radio',
+      label: 'Usuário',
+      value: 'usuario',
+      checked: true
+    });
+    alert.addButton('Cancelar');
+    alert.addButton({
+      text: 'Ok',
+      handler: data =>{
+        console.log(data);
+        let telaInsc = this.modalCtrl.create(InscricaoPage);
+        telaInsc.present();
+      }
+    });
+    alert.present();
+  }//inscricao
 
   esqueciSenha(){
     console.log("Clicou em esqueci a senha");
