@@ -33,7 +33,15 @@
 
   <ion-item>
     <ion-label stacked>Farmácia</ion-label>
-    <ion-input type="text" placeholder="Qual o nome da sua farmácia?"></ion-input>
+    <ion-input [(ngModel)]="farmacia.nome" type="text" placeholder="Qual o nome da sua farmácia?"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>E-mail</ion-label>
+    <ion-input [(ngModel)]="farmacia.email" type="text" placeholder="Endereço de e-mail principal"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Senha</ion-label>
+    <ion-input [(ngModel)]="farmacia.senha" type="password" placeholder="Senha de login"></ion-input>
   </ion-item>
 
 </ion-content>
