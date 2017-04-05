@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, ModalController, ViewControl
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AuthProviders, AuthMethods } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import { InscricaoPage } from '../inscricao/inscricao';
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-login-usuario',
@@ -10,10 +11,15 @@ import { InscricaoPage } from '../inscricao/inscricao';
 })
 export class LoginUsuarioPage {
 
+  ID: any;
+  currentuser: any;
   email: any;
   password: any;
   pessoas: FirebaseListObservable<any>;
   item: FirebaseObjectObservable<any>;
+
+  public fireAuth: any;
+  public userData: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,6 +29,9 @@ export class LoginUsuarioPage {
     public modalCtrl: ModalController) {
 
       this.pessoas = angFire.database.list('/userData');
+
+      this.fireAuth = firebase.auth();
+      this.userData = firebase.database().ref('/userData');
 
     }//constructor
 
@@ -40,19 +49,14 @@ export class LoginUsuarioPage {
       method: AuthMethods.Password
     }).then((response)=>{
       //console.log('Logado com sucesso');
-      let currentuser = {
+      this.currentuser = {
         email: response.auth.email,
         picture: response.auth.photoURL
       };
-      let ID = response.auth.uid;
-      console.log("Bem vindo: ", ID);
-      //this.item = this.angFire.database.object('/userData/${ID}');
-      console.log('/userData/${ID}');
-      console.log('/userData/' + ID);
-      this.item = this.angFire.database.object('/userData/' + ID);
-      console.log(this.item);
-
-      window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+      this.ID = response.auth.uid;
+      console.log("Bem vindo: ", this.ID);
+      //console.log(currentuser);
+      window.localStorage.setItem('currentuser', JSON.stringify(this.currentuser));
       this.navCtrl.pop();
     }).catch((error)=>{
       console.log(error);
@@ -93,7 +97,29 @@ export class LoginUsuarioPage {
   }//inscricao
 
   esqueciSenha(){
-    console.log("Clicou em esqueci a senha");
+    //console.log("Clicou em esqueci a senha");
+    let info = this.alertCtrl.create({
+      title: 'Redefinir senha',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'Digite aqui o e-mail cadastrado'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+        },
+        {
+          text: 'Ok',
+          handler: data => {
+            //console.log(data.email);
+            this.fireAuth.sendPasswordResetEmail(data.email);
+          }
+        }
+      ]
+    });
+    info.present();
   }//esqueciSenha
 
 
