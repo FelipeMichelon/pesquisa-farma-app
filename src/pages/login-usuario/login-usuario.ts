@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
-import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
-
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AuthProviders, AuthMethods } from 'angularfire2';
+import 'rxjs/add/operator/map';
 import { InscricaoPage } from '../inscricao/inscricao';
 
 @Component({
@@ -12,6 +12,8 @@ export class LoginUsuarioPage {
 
   email: any;
   password: any;
+  pessoas: FirebaseListObservable<any>;
+  item: FirebaseObjectObservable<any>;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -20,6 +22,7 @@ export class LoginUsuarioPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController) {
 
+      this.pessoas = angFire.database.list('/userData');
 
     }//constructor
 
@@ -28,7 +31,6 @@ export class LoginUsuarioPage {
   }
 
   loginUsuario(){
-    console.log("Login de usuário");
     this.angFire.auth.login({
       email: this.email,
       password: this.password
@@ -37,26 +39,25 @@ export class LoginUsuarioPage {
       provider: AuthProviders.Password,
       method: AuthMethods.Password
     }).then((response)=>{
-      console.log('Logado com sucesso');
+      //console.log('Logado com sucesso');
       let currentuser = {
         email: response.auth.email,
         picture: response.auth.photoURL
       };
+      let ID = response.auth.uid;
+      console.log("Bem vindo: ", ID);
+      //this.item = this.angFire.database.object('/userData/${ID}');
+      console.log('/userData/${ID}');
+      console.log('/userData/' + ID);
+      this.item = this.angFire.database.object('/userData/' + ID);
+      console.log(this.item);
+
       window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
       this.navCtrl.pop();
     }).catch((error)=>{
       console.log(error);
     })
   }//loginUsuario
-
-  loginGoogle(){
-    console.log("Login com o Google");
-
-  }//loginGoogle
-
-  loginFacebook(){
-    console.log("Login com o Facebook");
-  }//loginFacebook
 
   inscricao(){
     //console.log("Inscrição de usuário");
